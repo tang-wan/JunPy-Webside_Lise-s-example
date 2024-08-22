@@ -6,19 +6,6 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-import os
-
-# Define the canonical URL if you are using a custom domain on Read the Docs
-html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
-
-# Tell Jinja2 templates the build is running on Read the Docs
-if os.environ.get("READTHEDOCS", "") == "True":
-    if "html_context" not in globals():
-        html_context = {}
-    html_context["READTHEDOCS"] = True
-
-
-
 project = 'JunPy'
 copyright = '2024, Bao-Huei Huang'
 author = 'Bao-Huei Huang'
@@ -26,10 +13,24 @@ author = 'Bao-Huei Huang'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_nb']
+extensions = [
+        'myst_nb',
+        'sphinx.ext.duration',
+        'sphinx.ext.doctest',
+        'sphinx.ext.autodoc',
+        'sphinx.ext.autosummary',
+        'sphinx.ext.intersphinx',
+]
 nb_execution_mode = 'off'
 
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3/', None),
+    'sphinx': ('https://www.sphinx-doc.org/en/master/', None),
+}
+intersphinx_disabled_domains = ['std']
+
 templates_path = ['_templates']
+
 exclude_patterns = []
 
 
@@ -43,3 +44,5 @@ html_css_files = [
     'custom.css',
 ]
 
+# -- Options for EPUB output
+epub_show_urls = 'footnote'
