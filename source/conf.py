@@ -14,7 +14,7 @@ author = 'Bao-Huei Huang'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-        'myst_nb',
+        # 'myst_nb',
         'sphinx.ext.duration',
         'sphinx.ext.doctest',
         'sphinx.ext.autodoc',
